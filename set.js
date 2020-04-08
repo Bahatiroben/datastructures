@@ -1,6 +1,6 @@
 class Myset{
     constructor(initial) {
-        this.collection = initial ? initial : []
+        this.collection = initial ? initial : [];
     }
 
     has(element){
@@ -16,11 +16,11 @@ class Myset{
     };
 
     size(){
-        return this.collection.length
+        return this.collection.length;
     }
 
     elements(){
-        return this.collection
+        return this.collection;
     }
 
     remove(element) {
@@ -49,17 +49,17 @@ class Myset{
         });
 
         return intersectionSet.collection;
+    };
+
+    subset(otherSet) {
+        const thisSet = this.collection;
+        return thisSet.every(data => otherSet.has(data));
     }
 }
 
 module.exports = Myset;
 
-const evenNumbers = new Myset([2, 4, 6]);
-evenNumbers.add(8);
-evenNumbers.add(18);
-evenNumbers.add(28);
-evenNumbers.remove(28);
-evenNumbers.remove(999);
+const even = new Myset([2, 4, 6]);
+const whole = new Myset([1,2,3,4,5,6]);
 
-const odd = new Myset([1, 3, 9, 11, 2, 4, 6]);
-console.log(odd.intersection(evenNumbers));
+console.log(even.subset(whole));
